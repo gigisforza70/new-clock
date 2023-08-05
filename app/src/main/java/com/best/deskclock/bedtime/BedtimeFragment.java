@@ -99,7 +99,7 @@ public final class BedtimeFragment extends DeskClockFragment implements
         TextView[] textViews = new TextView[]{ txtBedtime, txtWakeup };
 
         Alarm alarm = getBedAlarm();
-        bindFragWakeClock(alarm);
+        
 
         saver = DataSaver.getInstance(context);
         saver.restore();
@@ -348,14 +348,11 @@ public final class BedtimeFragment extends DeskClockFragment implements
     private void bindClock(Alarm alarm) {
         clock.setTime(alarm.hour, alarm.minutes);
         clock.setAlpha(alarm.enabled ? AlarmItemViewHolder.CLOCK_ENABLED_ALPHA : AlarmItemViewHolder.CLOCK_DISABLED_ALPHA);
-        bindFragWakeClock(alarm);
+      
         hoursOfSleep(alarm);
     }
 
-    private void bindFragWakeClock(Alarm alarm) {
-        txtWakeup.setTime(alarm.hour, alarm.minutes);
-        txtWakeup.setAlpha(alarm.enabled ? AlarmItemViewHolder.CLOCK_ENABLED_ALPHA : AlarmItemViewHolder.CLOCK_DISABLED_ALPHA);
-    }
+    
 
     @Override
     public void onTimeSet(TimePickerDialogFragment fragment, int hourOfDay, int minute) {
